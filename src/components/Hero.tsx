@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
                     テクノロジーと人材で、<br />ビジネスの未来を創造する。
                 </h1>
                 <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
-                    AJOB合同会社は、専門性の高いIT人材と最先端の技術力で、お客様のデジタルトランスフォーメーションを成功に導きます。
+                    AJOB合同会社は、専門性の高い最先端の技術力で、お客様のDX化を成功に導きます。
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a href="#services" onClick={handleScrollTo} className="px-8 py-3 bg-[#00BFFF] text-white font-semibold rounded-full shadow-lg hover:bg-sky-400 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">

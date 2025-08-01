@@ -6,27 +6,27 @@ import { XMarkIcon } from './IconComponents';
 const worksData: Work[] = [
     {
         id: 1,
-        title: '大手製造業のDX支援プロジェクト',
+        title: '介護事業者のDX支援プロジェクト',
         category: 'ITコンサルティング',
-        description: '基幹システムの刷新とデータ活用基盤の構築を支援。',
-        longDescription: '伝統的な大手製造業クライアントに対し、全社的なデジタルトランスフォーメーションを推進。老朽化した基幹システムをクラウドベースの最新アーキテクチャに刷新し、散在していたデータを統合。リアルタイムでの生産状況可視化や需要予測の精度向上を実現し、年間15%のコスト削減に貢献しました。',
-        image: 'https://picsum.photos/seed/factory/600/400'
+        description: 'AI技術の導入でDX化を推進',
+        longDescription: 'ケアマネジメント業務に含まれる、ケアプラン作成工程がAIを組み込んだシステムの利用により自動化され、大幅な事務作業負担の軽減を実現しました',
+        image: '/images/work1.svg'
     },
     {
         id: 2,
-        title: 'SaaS企業の開発チーム組成支援',
+        title: '製造業における組織支援',
         category: '人材紹介',
-        description: '急成長中のBtoB SaaS企業へ、リードエンジニアを含む5名の開発チームを提供。',
-        longDescription: 'プロダクトの急成長に伴い開発リソース不足に悩むSaaS企業様に対し、当社のネットワークを駆使してスキルとカルチャーの両面でマッチする優秀なエンジニア5名（バックエンド3名、フロントエンド2名）を2ヶ月という短期間でご紹介。採用プロセスの設計から面接代行までトータルでサポートし、開発速度の向上に大きく貢献しました。',
-        image: 'https://picsum.photos/seed/startup/600/400'
+        description: '大手製造事業所に多数の人材を紹介し、IT化を促進。',
+        longDescription: '工場や倉庫などのDX化が進んでいない事業者に多数の人材を紹介し、人材不足を解消し社内のDX化を実現',
+        image: '/images/work2.svg'
     },
     {
         id: 3,
-        title: 'フィットネス向けモバイルアプリ開発',
+        title: '介護施設向け申し送りシステム開発',
         category: 'システム開発',
-        description: 'AIによるパーソナルトレーニング提案機能を搭載したiOS/Androidアプリを開発。',
-        longDescription: 'フィットネス業界のスタートアップ企業様向けに、AIトレーナー機能を核としたモバイルアプリケーションを企画段階から開発。ユーザーの目標や身体データに基づき、最適なトレーニングメニューを動画付きで提案します。UI/UXデザインにも注力し、継続利用率の高いサービスを実現しました。',
-        image: 'https://picsum.photos/seed/fitness/600/400'
+        description: 'AIによる申し送りの自動化システムを開発',
+        longDescription: '介護施設ないの毎日の申し送りを、AIを組み込んだシステムにより自動化。申し送りの漏れや記録の保管などの業務が大幅に改善され、現場から好評をいただいております',
+        image: '/images/work3.svg'
     }
 ];
 

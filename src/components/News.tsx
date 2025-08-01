@@ -3,9 +3,9 @@ import type { NewsItem } from '../types';
 import ScrollAnimator from './ScrollAnimator';
 
 const newsData: NewsItem[] = [
-    { date: '2025.07.10', title: 'Webサイトをリニューアルしました。' },
-    { date: '2025.06.20', title: 'DX推進に関するウェビナーを開催しました。' },
-    { date: '2025.05.15', title: '大手製造業様とのパートナーシップ契約を締結しました。' }
+    { date: '2025.07.30', title: '当社Webサイトをリニューアルしました。' },
+    { date: '2025.07.20', title: 'DX推進に関するウェビナーを開催しました。' },
+    { date: '2025.07.15', title: '介護事業所コンサル会社とのパートナーシップ契約を締結しました。' }
 ];
 
 const News: React.FC = () => {
