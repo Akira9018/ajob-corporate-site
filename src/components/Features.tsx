@@ -7,7 +7,7 @@ const featuresData: Feature[] = [
     {
         icon: <PuzzlePieceIcon />,
         title: 'ワンストップソリューション',
-        description: '戦略立案から人材採用、システム開発、運用まで一気通貫でサポート。ビジネスのあらゆるフェーズに対応します。'
+        description: '戦略立案からシステム開発、運用まで一気通貫でサポート。ビジネスのあらゆるフェーズに対応します。'
     },
     {
         icon: <CpuChipIcon />,

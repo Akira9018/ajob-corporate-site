@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             <ParticleCanvas />
             <div className="relative z-10 p-4">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 hero-glow">
-                    テクノロジーと人材で、<br />ビジネスの未来を創造する。
+                    テクノロジーの力で、<br />ビジネスの未来を創造する。
                 </h1>
                 <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
                     AJOB合同会社は、専門性の高い最先端の技術力で、お客様のDX化を成功に導きます。

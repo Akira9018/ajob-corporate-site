@@ -13,14 +13,6 @@ const worksData: Work[] = [
         image: '/images/work1.svg'
     },
     {
-        id: 2,
-        title: '製造業における組織支援',
-        category: '人材紹介',
-        description: '大手製造事業所に多数の人材を紹介し、IT化を促進。',
-        longDescription: '工場や倉庫などのDX化が進んでいない事業者に多数の人材を紹介し、人材不足を解消し社内のDX化を実現',
-        image: '/images/work2.svg'
-    },
-    {
         id: 3,
         title: '介護施設向け申し送りシステム開発',
         category: 'システム開発',
@@ -62,7 +54,7 @@ const Works: React.FC = () => {
                     </div>
                 </ScrollAnimator>
 
-                <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-16 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
                     {worksData.map((work) => (
                         <ScrollAnimator key={work.id}>
                             <div

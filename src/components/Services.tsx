@@ -1,14 +1,9 @@
 import React from 'react';
 import type { Service } from '../types';
-import { BriefcaseIcon, LightBulbIcon, CodeBracketSquareIcon } from './IconComponents';
+import { LightBulbIcon, CodeBracketSquareIcon } from './IconComponents';
 import ScrollAnimator from './ScrollAnimator';
 
 const servicesData: Service[] = [
-    {
-        icon: <BriefcaseIcon />,
-        title: '人材紹介事業',
-        description: 'ITを利用した人材マッチング機能を駆使して全国の製造業を紹介可能'
-    },
     {
         icon: <LightBulbIcon />,
         title: 'ITコンサルティング事業',
@@ -28,12 +23,12 @@ const Services: React.FC = () => {
                 <ScrollAnimator>
                     <div className="text-center">
                         <h2 className="text-3xl md:text-4xl font-bold text-white">Our Services</h2>
-                        <p className="mt-4 text-lg text-gray-400">お客様のビジネスを加速させる3つのコア事業</p>
+                        <p className="mt-4 text-lg text-gray-400">お客様のビジネスを加速させる2つのコア事業</p>
                         <div className="mt-6 w-24 h-1 bg-[#00BFFF] mx-auto"></div>
                     </div>
                 </ScrollAnimator>
 
-                <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-16 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
                     {servicesData.map((service, index) => (
                         <ScrollAnimator key={index} className={`transition-delay-${index * 150}`}>
                             <div className="bg-gray-800 rounded-lg shadow-xl p-8 h-full flex flex-col transform hover:-translate-y-2 transition-transform duration-300 border-t-4 border-[#00BFFF]">
