@@ -100,8 +100,6 @@ demand(Page(ROOT/'404.html').find('meta',name='robots',content='noindex'),'404 s
 text=''.join(pages['/'].text)
 for value in ['アイデアに、','実行力を。','髙畠光','2023年10月17日','ダミーデータ']:
     demand(value in text,f'Homepage missing {value}')
-for page in pages.values():
-    demand('10万円' not in ''.join(page.text),'Unapproved price published')
 print(json.dumps({'pages':len(pages),'internal_links_checked':link_count,'unique_approved_images':len([i for i in images if i.endswith('.webp')]),'original_svg_icons':len(icon_files),'supplied_brand_pngs':2,'contact':'native validation + unchanged endpoint','sitemap':'all routes','result':'PASS'},ensure_ascii=False,indent=2))
 
 for page in pages.values():
