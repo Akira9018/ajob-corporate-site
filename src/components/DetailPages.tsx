@@ -172,7 +172,9 @@ export function PrivacyPage() {
       <h2><Marker>お問い合わせの送信サービス</Marker></h2>
       <p>このサイトは、お問い合わせの受付・送信に外部サービス「Formspree」を利用します。フォームに入力した情報は、送信時にFormspreeへ送られます。外部サービスによる取り扱いは、同サービスの<a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noreferrer">プライバシーポリシー（別タブ）</a>もご確認ください。</p>
       <h2><Marker>外部サービスへの接続</Marker></h2>
-      <p>サイトの配信にはVercel、文字の表示にはGoogle Fontsを利用します。閲覧時にブラウザからこれらのサービスへの通信が発生します。このサイトの実装には、広告用・アクセス解析用のタグは組み込んでいません。</p>
+      <p>サイトの配信にはVercel、文字の表示にはGoogle Fontsを利用します。閲覧時にブラウザからこれらのサービスへの通信が発生します。</p>
+      <h2><Marker>アクセス解析</Marker></h2>
+      <p>サイトの改善のため、Vercel Web AnalyticsとGoogle アナリティクス（GA4）でアクセス状況を計測します。閲覧したページ、流入元、利用端末などの統計情報を扱い、個人を特定する目的では利用しません。Google アナリティクスの取り扱いは<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noreferrer">Googleの説明ページ（別タブ）</a>をご確認ください。</p>
       <h2><Marker>情報の管理</Marker></h2>
       <p>お問い合わせ情報は、対応に必要な範囲で取り扱います。フォームには、個人の医療情報、第三者の機密情報など、お問い合わせに不要な情報を入力しないでください。</p>
       <h2><Marker>情報に関するお問い合わせ</Marker></h2>
