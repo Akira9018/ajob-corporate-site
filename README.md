@@ -1,97 +1,54 @@
-# AJOB合同会社 コーポレートサイト
+# AJOB合同会社 — corporate website
 
-AJOB合同会社の公式コーポレートサイトです。最先端の技術スタックを使用し、企業のプロフェッショナルなイメージを表現しています。
+React 19 / TypeScript / Vite 7 / npm を維持したコーポレートサイトです。既存の GitHub → Vercel の公開フローを引き続き利用します。Sites への移行は行っていません。
 
-## 🚀 デプロイメント
+## 開発・検証
 
-**Live Site:** [ajob-corporate-site.vercel.app](https://ajob-corporate-site.vercel.app)
+Node.js 22.18 以降または 24、npm、Python 3（静的HTML検証のみ）を使用します。
 
-## 💼 事業内容
-
-- **人材紹介事業** - ITを活用した人材マッチング
-- **ITコンサルティング事業** - DX推進・新規事業立案・IT戦略策定
-- **システム開発事業** - Webアプリケーション・モバイルアプリ開発
-
-## 🛠️ 技術スタック
-
-- **Frontend:** React 19 + TypeScript
-- **Build Tool:** Vite 7.0
-- **Styling:** Tailwind CSS 4.1
-- **Linting:** ESLint
-- **Animation:** Custom Canvas Particle Effects
-- **Form:** Formspree Integration
-
-## 🎨 主要機能
-
-- レスポンシブデザイン対応
-- 動的パーティクルアニメーション背景
-- スムーズスクロールナビゲーション
-- お問い合わせフォーム
-- SEO最適化済み
-
-## 🏗️ 開発セットアップ
-
-### 必要条件
-- Node.js 18+ 
-- npm または yarn
-
-### インストール
-```bash
-# 依存関係のインストール
-npm install
-
-# 開発サーバー起動
+```sh
+npm ci
 npm run dev
+```
 
-# 本番ビルド
+本番相当の確認：
+
+```sh
 npm run build
-
-# プレビュー
-npm run preview
-
-# コード品質チェック
+npm test
 npm run lint
+npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
-### 設定ファイル
-- `tailwind.config.js` - Tailwind CSS設定
-- `postcss.config.js` - PostCSS設定
-- `eslint.config.js` - ESLint設定
-- `vite.config.ts` - Vite設定
+`build` はクライアントのビルド後、Vite のSSRビルドと React の `renderToString` で14ページと404を静的HTML化します。追加フレームワーク・サーバー・CMSは不要です。`dist/` がVercelへの配信対象です。ページは通常のリンクで遷移し、各URLに直接アクセスできます。既存のVercelプロジェクトで `npm run build` / `dist` を使用してください。
 
-## 📁 プロジェクト構成
+`npm test` は問い合わせの模擬通信テストと、ビルド済みHTML・内部リンク・画像・サイトマップ・フォーム属性の検証を行います。実際のFormspreeへの通信は一切行いません。ブラウザ表示の検証は別途必要です。
 
-```
-src/
-├── components/          # Reactコンポーネント
-│   ├── Header.tsx      # ヘッダー・ナビゲーション
-│   ├── Hero.tsx        # ヒーローセクション
-│   ├── Services.tsx    # 事業内容
-│   ├── Features.tsx    # 強み・特徴
-│   ├── Works.tsx       # 実績
-│   ├── Gallery.tsx     # ギャラリー
-│   ├── About.tsx       # 会社概要
-│   ├── Contact.tsx     # お問い合わせフォーム
-│   └── ...
-├── types.ts            # TypeScript型定義
-├── index.css           # グローバルスタイル
-└── App.tsx             # メインアプリケーション
-```
+## 構成
 
-## 🔧 開発ガイドライン
+- `src/content.ts`：会社情報、事業3件、コラム3件、ルートとメタデータ
+- `src/components/HomeSections.tsx`：トップページの構成
+- `src/components/DetailPages.tsx`：事業詳細、会社情報、コラム本文など
+- `src/components/Site.tsx`：共通ヘッダー・フッター・CTA・LINE画面イメージ
+- `src/components/Contact.tsx` / `src/contactTransport.ts`：フォームと送信処理
+- `src/index.css`：レスポンシブ、フォーカス、動きを抑える設定を含むスタイル
+- `scripts/prerender.mjs`：静的HTML・ページ別メタデータ・構造化データ・sitemap / robotsの生成
+- `public/assets/`：提供された個別画像から変換した軽量素材、独自SVGアイコン10種、正式ロゴ原本2点
+- `src/components/Icon.tsx` / `BrandMark.tsx`：再利用アイコンと原本を保持したロゴの表示範囲調整
+- `review/icon-catalog.html` / `review/icon-catalog.png`：公開ナビには載せないアイコン一覧
 
-- TypeScript strict mode使用
-- ESLint設定に従ったコード品質管理
-- レスポンシブファーストデザイン
-- アクセシビリティ対応
-- SEO最適化
+## 問い合わせ
 
-## 📞 お問い合わせ
+既存の `https://formspree.io/f/mqalbgwy` を保持しています。環境変数の追加はありません。成功表示は受付サービスのHTTP成功応答後のみ表示します。失敗・タイムアウト時は入力を保持し、結果を確認できなかったことを表示します。ネイティブHTMLフォームにも同じPOST先を指定し、JavaScript無効時に個人情報がGETクエリへ入らないようにしています。
 
-**AJOB合同会社**  
-大阪府大阪市北区天神橋1丁目19-16  
-有料職業紹介事業許可番号：27-ユ-304270
+ユーザーの最終指示によりFormspreeの既存受信設定を維持しています。管理画面の受信先と実メール着信は未確認で、宛先変更・テストメール送信は行っていません。
 
----
+## 原稿の更新
 
-© 2025 AJOB LLC. All rights reserved.
+コラムは `articles` に `slug`・カテゴリ・タイトル・説明・段落・関連事業を追加します。ルートとサイトマップは自動で更新されます。公開日の指定や架空の過去日付はありません。今回追加したコラム3本、代表メッセージ、サービス説明、プライバシー説明は、公開前に確認する新規原稿です。
+
+会社概要は既存ソースの正しい表記を踏襲。オフィス写真は架空の生成画像として明示し、実在の執務場所や社員写真として扱っていません。試作サイトの口コミや件数を実績として転用していません。
+
+## 公開前レビュー
+
+進捗・検証結果・制約は [IMPLEMENTATION-REPORT.md](IMPLEMENTATION-REPORT.md)、具体的な画面確認手順は [REVIEW-CHECKLIST.md](REVIEW-CHECKLIST.md) を参照してください。独自ドメインの本番切り替えは、プレビューの確認後に行います。
