@@ -3083,3 +3083,16 @@ main { overflow-x: clip; }
 .motion-paused .text-marker, .motion-user-paused .text-marker { animation-play-state: paused; }
 @media(prefers-reduced-motion:reduce) { .text-marker.marker-wait { background-size: 100% .36em; } }
 .case-copy h3>.text-marker { display: inline; }
+
+/* LINE demo: real screenshots on the card and project, a live iframe on the service page. */
+.service-art-phone, .service-card .service-art-phone { height: 320px; max-height: 320px; min-height: 0; flex: none; align-items: flex-start; margin-bottom: 12px; overflow: hidden; }
+.service-art-phone>img { width: 62%; max-width: 235px; mix-blend-mode: normal; border-radius: 26px; box-shadow: 0 14px 34px #20211f22; transform: rotate(-3deg) translateY(14px); }
+.case-visual-line { overflow: hidden; }
+.case-phone { height: 112%; width: auto; max-width: none; border-radius: 26px; box-shadow: 0 16px 40px #20211f26; transform: rotate(-4deg) translateY(7%); }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.demo-embed { display: flex; flex-direction: column; align-items: center; }
+.demo-frame { width: 390px; max-width: 100%; height: 834px; transform: scale(.82); transform-origin: top center; margin-bottom: -150px; }
+.demo-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: transparent; }
+.demo-caption { font-size: 12px; color: #66635d; text-align: center; max-width: 360px; line-height: 1.7; }
+.demo-caption a { font-weight: 700; color: #20211f; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 700px) { .service-art-phone, .service-card .service-art-phone { height: 230px; max-height: 230px; } .demo-frame { transform: scale(.92); margin-bottom: -66px; } }

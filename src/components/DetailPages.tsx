@@ -5,6 +5,12 @@ import { articles, company, services } from '../content';
 import { AboutSection, ArticleCards, MessageSection, ProjectsSection, ServicesSection } from './HomeSections';
 import Contact from './Contact';
 import { Arrow, Breadcrumb, Eyebrow, LineDiagram, LinkButton, PageIntro } from './Site';
+function DemoEmbed() {
+  return <div className="demo-embed">
+    <div className="demo-frame"><iframe src="/demo/kintai/?embed=1" title="LINE勤怠システムのデモ。画面の中を操作できます" loading="lazy" /></div>
+    <p className="demo-caption">勤怠・シフト・経費・掲示板まで、画面の中を実際に操作できます（ダミーデータ）。<a href="/demo/kintai/" target="_blank" rel="noreferrer">別タブで大きく開く<span className="sr-only">（別タブ）</span></a></p>
+  </div>;
+}
 export function ServicePage({ slug }: {
   slug: string;
 }) {
@@ -18,9 +24,12 @@ export function ServicePage({ slug }: {
           <h1><Marker>{service.title}</Marker></h1>
           <h2><Marker>{service.headline}</Marker></h2>
           <p>{service.description}</p>
-          <LinkButton href="/contact/">この事業について相談する</LinkButton>
+          <div className="detail-actions">
+            <LinkButton href="/contact/">この事業について相談する</LinkButton>
+            {service.slug === 'line-app' && <a className="button button-light" href="/demo/kintai/" target="_blank" rel="noreferrer">デモを触ってみる<span className="sr-only">（別タブ）</span><Arrow /></a>}
+          </div>
         </div>
-        <div className="detail-art">{service.image ? <img src={`/assets/illustrations/${service.image}.webp`} width="1536" height="1024" alt="" /> : <LineDiagram interactive />}</div>
+        <div className="detail-art">{service.slug === 'line-app' ? <DemoEmbed /> : service.image ? <img src={`/assets/illustrations/${service.image}.webp`} width="1536" height="1024" alt="" /> : <LineDiagram interactive />}</div>
       </div>
     </section>
     <div className="detail-intro wrap narrow section-space">

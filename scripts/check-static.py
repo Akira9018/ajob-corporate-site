@@ -27,7 +27,7 @@ class Page(HTMLParser):
 def demand(condition, message):
     if not condition: raise AssertionError(message)
 
-files = list(ROOT.rglob('index.html'))
+files = [p for p in ROOT.rglob('index.html') if 'demo' not in p.parts]
 demand(len(files)==14, f'Expected 14 pages, found {len(files)}')
 pages = {('/'+str(p.parent.relative_to(ROOT)).strip('.')+'/').replace('//','/'):Page(p) for p in files}
 images = set()
@@ -51,6 +51,9 @@ for route,page in pages.items():
         if url.path.startswith('/_vercel/'): continue  # served by Vercel at runtime (Web Analytics)
         if not url.path:
             demand(unquote(url.fragment) in page.ids,f'{route}: broken fragment {ref}')
+            continue
+        if tag=='a' and url.path.startswith('/demo/'):
+            demand((ROOT/url.path.lstrip('/')/'index.html').is_file(), f'{route}: missing demo {ref}')
             continue
         if tag=='a':
             link_count += 1

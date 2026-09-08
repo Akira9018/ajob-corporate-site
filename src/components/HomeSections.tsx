@@ -69,7 +69,7 @@ export function ServicesSection({ full = false }: {
     <h3><Marker>{s.title}</Marker></h3>
     <p className="service-headline">{s.headline}</p>
     <p className="service-description">{s.description}</p>
-    <div className="service-art">{s.image ? <img src={`/assets/illustrations/${s.image}.webp`} width="1536" height="1024" alt="" loading="lazy" /> : <LineDiagram />}</div>
+    <div className={`service-art ${'portrait' in s && s.portrait ? 'service-art-phone' : ''}`}>{s.image ? <img src={`/assets/illustrations/${s.image}.webp`} width={'imageWidth' in s ? s.imageWidth : 1536} height={'imageHeight' in s ? s.imageHeight : 1024} alt="" loading="lazy" /> : <LineDiagram />}</div>
     <span className="service-link">詳しく見る <span className="circle-arrow">
       <Arrow />
     </span>
