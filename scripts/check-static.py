@@ -48,6 +48,7 @@ for route,page in pages.items():
         if not ref: continue
         url = urlsplit(ref)
         if url.scheme or url.netloc: continue
+        if url.path.startswith('/_vercel/'): continue  # served by Vercel at runtime (Web Analytics)
         if not url.path:
             demand(unquote(url.fragment) in page.ids,f'{route}: broken fragment {ref}')
             continue
