@@ -12,7 +12,7 @@ export function Hero() {
       <span className="hero-outline-word" aria-hidden="true">MAKE IT</span>
       <div className="hero-copy">
         <p className="hero-kicker">THINK. BUILD. IMPROVE.</p>
-        <h1 aria-label="アイデアに、実行力を。">{['アイデアに、', '実行力を。'].map((line, row) => <span className={`hero-title-mask hero-title-row-${row}`} aria-hidden="true" key={line}><span>{Array.from(line).map((character, index) => <span className="hero-glyph" key={index} style={{ '--glyph-order': index + row * 6 } as CSSProperties}><span className="hero-glyph-ink">{character}</span></span>)}</span></span>)}</h1>
+        <h1 aria-label="アイデアに、実行力を。"><span className="hero-idea-spark" aria-hidden="true">✦</span>{['アイデアに、', '実行力を。'].map((line, row) => <span className={`hero-title-mask hero-title-row-${row}`} aria-hidden="true" key={line}><span>{Array.from(line).map((character, index) => <span className="hero-glyph" key={index} style={{ '--glyph-order': index + row * 6, '--glyph-accent': ['#8b74c9', '#4f9c7c', '#d98b5e'][index % 3] } as CSSProperties}><span className="hero-glyph-ink">{character}</span></span>)}</span></span>)}</h1>
         <p className="hero-lead">AIの相談から、仕組みの開発まで。<br />会社の「次」を、一緒につくる。</p>
         <div className="hero-actions">
           <LinkButton href="/about/">AJOBについて</LinkButton>
