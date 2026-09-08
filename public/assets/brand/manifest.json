@@ -1,0 +1,34 @@
+[
+  {
+    "file": "ajob-horizontal-original.png",
+    "source_filename": "9.png",
+    "sha256": "3cfb3c2c1174db9ae167e4e3a6a4c5bd1a3192e4bbae409e91b4d2c289649f3a",
+    "original_dimensions": [
+      2000,
+      2000
+    ],
+    "display_viewport_xywh": [
+      54,
+      855,
+      1848,
+      313
+    ],
+    "operation": "CSS viewport crop of transparent padding only"
+  },
+  {
+    "file": "ajob-symbol-original.png",
+    "source_filename": "10.png",
+    "sha256": "c9bd4337eb83031d1f5cc68c85b55b9064a1cde142d2a607005b151669e27d5a",
+    "original_dimensions": [
+      2000,
+      2000
+    ],
+    "display_viewport_xywh": [
+      361,
+      470,
+      1234,
+      1130
+    ],
+    "operation": "CSS viewport crop of transparent padding only"
+  }
+]
