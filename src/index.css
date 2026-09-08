@@ -365,11 +365,17 @@ input:focus-visible,select:focus-visible,textarea:focus-visible {
   white-space: nowrap;
   line-height: 1.07;
   letter-spacing: .012em;
-  padding: 3px 0 6px 5%;
+  padding: 3px 0 6px 0;
+  overflow: hidden;
 }
-.ribbon span {
-  margin-left: 60px;
-}
+.ribbon-track { display: flex; width: max-content; animation: ribbon-scroll 70s linear infinite; will-change: transform; }
+.ribbon-group { display: flex; flex: none; }
+.ribbon-item { display: inline-flex; align-items: center; padding-right: .42em; }
+.ribbon-star { font-style: normal; font-size: .38em; margin-left: .42em; color: #20211f; transform: translateY(-.15em); }
+@keyframes ribbon-scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+.motion-paused .ribbon-track, .motion-user-paused .ribbon-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ribbon-track { animation: none; } }
+@media (max-width: 700px) { .ribbon-track { animation-duration: 34s; } }
 .about-section {
   display: grid;
   grid-template-columns: 1fr 1.15fr;

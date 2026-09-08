@@ -30,7 +30,8 @@ export function Hero() {
       <span className="scroll-cue" aria-hidden="true">SCROLL TO EXPLORE ↓</span>
     </section>
     <div className="ribbon-window" aria-hidden="true">
-      <div className="ribbon">MAKE IT HAPPEN.<span>MAKE IT HAPPEN.</span>
+      <div className="ribbon">
+        <div className="ribbon-track">{[0, 1].map(copy => <div className="ribbon-group" key={copy}>{['MAKE IT HAPPEN.', 'THINK. BUILD. IMPROVE.', 'MAKE IT HAPPEN.', 'FROM IDEA TO ACTION.'].map((phrase, i) => <span className="ribbon-item" key={i}>{phrase}<i className="ribbon-star">✦</i></span>)}</div>)}</div>
       </div>
     </div>
   </>;
