@@ -20,12 +20,12 @@ function ProjectVisual({ kind }: { kind: string }) {
 export default function ProjectsSection({ full = false }: { full?: boolean }) {
   return <section id="projects" className={`case-section wrap ${full ? 'case-index' : 'section-space'} reveal`}>
     {!full && <div className="section-heading"><div><Eyebrow en="OUR PROJECTS">取り組み</Eyebrow><h2><Marker>現場の課題から、<br />生まれる仕組み。</Marker></h2></div><p>目の前の「困った」に向き合い、<br />一つずつ、かたちにしています。</p></div>}
-    <div className="case-list">{projects.map((project, index) => <article className={`case-study case-${project.id}`} id={`project-${project.id}`} key={project.id}>
+    <div className="case-list">{(full ? projects : projects.slice(0, 2)).map((project, index) => <article className={`case-study case-${project.id}`} id={`project-${project.id}`} key={project.id}>
       <div className="case-topline"><span className="case-number">0{index + 1}<span> / {project.en}</span></span></div>
       <ProjectVisual kind={project.id} />
       <div className="case-copy"><p className="case-lead">{project.lead}</p><h3><Marker>{project.title.split('\n').map((line, i) => <span key={i}>{line}</span>)}</Marker></h3><ul className="case-tags">{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><p>{project.text}</p>{full && <div className="case-focus"><span>設計のポイント</span><p>{project.focus}</p></div>}
         {project.href && <a className="text-link" href={project.href} {...(project.id === 'portal' ? { target: '_blank', rel: 'noreferrer' } : {})}>{project.link}{project.id === 'portal' && <span className="sr-only">（別タブ）</span>}<Arrow /></a>}<small>{project.note}</small></div>
     </article>)}</div>
-    {!full && <a className="text-link case-all" href="/projects/">すべての取り組みを見る <Arrow /></a>}
+    {!full && <a className="text-link case-all" href="/projects/">すべての取り組みを見る（全{projects.length}件） <Arrow /></a>}
   </section>;
 }

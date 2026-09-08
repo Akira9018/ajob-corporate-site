@@ -61,14 +61,14 @@ export function Footer() {
         <div>
           <a href="/about/">私たちについて</a>
           <a href="/company/">会社情報</a>
-          <a href="/projects/">取り組み</a>
+          <a href="/contact/">お問い合わせ</a>
+          <a href="/privacy/">プライバシーポリシー</a>
         </div>
         <div>
           <a href="/services/">事業紹介</a>{services.map(s => <a className="footer-sub" href={`/services/${s.slug}/`} key={s.slug}>{s.title}</a>)}</div>
         <div>
+          <a href="/projects/">取り組み</a>
           <a href="/journal/">コラム</a>
-          <a href="/contact/">お問い合わせ</a>
-          <a href="/privacy/">プライバシーポリシー</a>
         </div>
       </div>
     </div>
