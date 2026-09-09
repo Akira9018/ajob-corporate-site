@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import MotionBackdrop from './components/MotionBackdrop';
 import { articles, services } from './content';
 import { Header, Footer, ContactBanner } from './components/Site';
@@ -74,5 +75,6 @@ export default function App({ path = '/' }: {
     <Header path={path} />
     <main id="main">{page}{!['/contact/', '/privacy/'].includes(path) && <ContactBanner />}</main>
     <Footer />
+    <Analytics />
   </>;
 }
