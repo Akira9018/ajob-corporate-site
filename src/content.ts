@@ -1,3 +1,4 @@
+import { platformArticles, type JournalArticle } from './journal';
 export const company = {
   name: 'AJOB合同会社', representative: '髙畠光', established: '2023年10月17日',
   address: '大阪府大阪市北区梅田一丁目1番3号 大阪駅前第3ビル29階',
@@ -31,7 +32,7 @@ export const services = [
     faq: [['自社のホームページがなくても参加できますか？', 'はい。自社サイトを持たない会社や、持っていても集客に使えていない会社を想定しています。ポータル内に各社の紹介ページを用意します。'], ['同じ業種の会社が集まると競合になりませんか？', '対応エリアや得意分野が異なる会社で組む、問い合わせの振り分けルールを先に決めるなど、参加企業が納得できる形を設計します。競合を減らすために地域と社数を絞るのが、このサービスの考え方です。'], ['集客の成果は保証されますか？', '問い合わせ件数や売上は保証していません。広告費と問い合わせ状況を毎月共有し、続けるかどうかを判断できるようにします。'], ['別の地域や業種でも相談できますか？', 'はい。リフォームに限らず、地域を絞って集客したい業種であれば、構想段階からご相談いただけます。']],
   },
 ];
-export const articles = [
+const staticArticles = [
   {
     slug: 'before-ai-adoption', category: 'AI活用', color: 'lavender', number: '01', symbol: '?',
     title: 'AI導入、最初に整理したい3つのこと', description: 'ツールを選ぶ前に、仕事のどこを変えたいかを考える。経営者と現場で共有したい、目的・対象業務・進め方の整理方法。', service: 'ai-advisory',
@@ -67,6 +68,8 @@ export const articles = [
     ],
   },
 ];
+// 管理画面 (ajob-portal) で公開したコラムを既存3本の後ろに続ける
+export const articles: JournalArticle[] = [...staticArticles, ...platformArticles(staticArticles.length + 1)];
 export const nav = [['私たちについて', '/about/'], ['事業紹介', '/services/'], ['取り組み', '/projects/'], ['コラム', '/journal/'], ['会社情報', '/company/']];
 export const routes = ['/', '/about/', '/services/', ...services.map(s => `/services/${s.slug}/`), '/projects/', '/journal/', ...articles.map(a => `/journal/${a.slug}/`), '/company/', '/contact/', '/privacy/'];
 export function pageMeta(path: string) {

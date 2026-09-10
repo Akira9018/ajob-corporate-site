@@ -28,7 +28,7 @@ def demand(condition, message):
     if not condition: raise AssertionError(message)
 
 files = [p for p in ROOT.rglob('index.html') if 'demo' not in p.parts]
-demand(len(files)==14, f'Expected 14 pages, found {len(files)}')
+demand(len(files)>=14, f'Expected at least 14 pages, found {len(files)}')  # 管理画面から追加されたコラムの分だけ増える
 pages = {('/'+str(p.parent.relative_to(ROOT)).strip('.')+'/').replace('//','/'):Page(p) for p in files}
 images = set()
 link_count = 0

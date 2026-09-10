@@ -133,7 +133,7 @@ export function ArticlePage({ slug }: {
             <a href={`#section-${i + 1}`}>{s.title}</a>
           </li>)}</ol>
         </nav>{article.sections.map((s, i) => <section id={`section-${i + 1}`} key={s.title}>
-          <h2 className="article-section-heading"><Marker><Icon name={articleSectionIcons[i]} size={30} /><span>{s.title}</span></Marker></h2>{s.paragraphs.map(p => <p key={p}>{p}</p>)}</section>)}{'sources' in article && article.sources && <aside className="article-sources">
+          <h2 className="article-section-heading"><Marker><Icon name={articleSectionIcons[i % articleSectionIcons.length]} size={30} /><span>{s.title}</span></Marker></h2>{s.paragraphs.map(p => <p key={p}>{p}</p>)}</section>)}{'sources' in article && article.sources && <aside className="article-sources">
             <h2><Marker>参考資料</Marker></h2>{article.sources.map(s => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.title} <span className="sr-only">（別タブ）</span>
               <Arrow />
             </a>)}</aside>}<aside className="article-related">
