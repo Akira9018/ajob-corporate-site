@@ -25,3 +25,30 @@ test('network failures remain distinct from accepted submissions',async()=>{
 test('timeouts abort the request and retain an uncertain delivery result',async()=>{
  await assert.rejects(sendContact(payload,async(_url,options)=>new Promise((_resolve,reject)=>{options.signal.addEventListener('abort',()=>reject(new Error('aborted')))}),5),e=>e instanceof ContactDeliveryError&&e.kind==='timeout')
 })
+test('records the inquiry in the portal DB after the intake service accepts it',async()=>{
+ const urls=[]
+ const portal={url:'https://portal.example.invalid',key:'anon-key'}
+ await sendContact(payload,async(url,options)=>{
+  urls.push(url)
+  if(url===CONTACT_ENDPOINT) return new Response('{}',{status:200})
+  assert.equal(options.headers.apikey,'anon-key')
+  const body=JSON.parse(options.body)
+  assert.equal(body.p_site_slug,'ajob-hp')
+  assert.equal(body.p_name,'テスト')
+  assert.equal(body.p_contact,'qa@example.invalid')
+  assert.match(body.p_message,/会社名: 検証専用/)
+  assert.match(body.p_message,/ローカルの模擬通信です。/)
+  return new Response('[]',{status:200})
+ },20000,portal)
+ assert.deepEqual(urls,[CONTACT_ENDPOINT,'https://portal.example.invalid/rest/v1/rpc/submit_inquiry'])
+})
+test('portal DB failures never turn an accepted submission into an error',async()=>{
+ const portal={url:'https://portal.example.invalid',key:'anon-key'}
+ await sendContact(payload,async(url)=>url===CONTACT_ENDPOINT?new Response('{}',{status:200}):new Response('',{status:500}),20000,portal)
+ await sendContact(payload,async(url)=>{if(url===CONTACT_ENDPOINT) return new Response('{}',{status:200}); throw new TypeError('offline')},20000,portal)
+})
+test('skips the portal DB when it is not configured',async()=>{
+ let calls=0
+ await sendContact(payload,async()=>{calls++;return new Response('{}',{status:200})},20000,null)
+ assert.equal(calls,1)
+})
