@@ -41,6 +41,13 @@ AJOBが運営するサイトはすべてこの3点セットで計測する。
 
 参加企業ごとの問い合わせ数は `company` パラメータで集計できる。
 
+**AJOB HP での実装（2026-10-06）**: `src/analytics.ts` の `trackEvent()` 経由で送信。
+- `contact_submit` … フォーム送信が受付サービスに受理されたとき（パラメータ `inquiry_type` = ご相談の内容）
+- `contact_error` … 送信失敗（パラメータ `reason` = server / network / timeout）
+- 電話・LINEのリンクは HP に無いため `tel_click` / `line_click` は未実装
+
+GA4 の新UIでは、イベントが一度受信されてから **管理 → データの表示 → イベント → 最近のイベント** で☆を付けてキーイベントにする（事前登録はできない）。
+
 ## 3. Google Search Console（10分）
 
 1. https://search.google.com/search-console → **プロパティを追加**
