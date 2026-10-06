@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { Arrow } from './Site';
 import { CONTACT_ENDPOINT, ContactDeliveryError, sendContact } from '../contactTransport';
+import { trackEvent } from '../analytics';
 export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState('');
@@ -25,10 +26,12 @@ export default function Contact() {
     try {
       const payload = Object.fromEntries([...data.entries()].map(([key, value]) => [key, String(value).trim()]));
       await sendContact(payload);
+      trackEvent('contact_submit', { inquiry_type: payload.type || '' });
       setStatus('sent');
       form.reset();
     }
     catch (e) {
+      trackEvent('contact_error', { reason: e instanceof ContactDeliveryError ? e.kind : 'unknown' });
       setError(e instanceof ContactDeliveryError && e.kind === 'timeout' ? '応答を確認できませんでした。送信済みの可能性があるため、時間をおいてから再度ご確認ください。' : e instanceof ContactDeliveryError && e.kind === 'server' ? '送信を完了できませんでした。入力内容は残っています。時間をおいて、もう一度お試しください。' : '通信に問題があり、送信結果を確認できませんでした。入力内容を残しています。接続状況をご確認ください。');
       setStatus('error');
     }
